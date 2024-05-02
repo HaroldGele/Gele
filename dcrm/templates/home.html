@@ -1,1 +1,24 @@
-<h1>SA WAKAS GUMANA DIN SHET</h1>
+{% extends 'base.html' %}
+{% block content %}  
+
+<style>
+    .custom-btn {
+        background-color: fuchsia;
+        border-color: rgb(255, 0, 191);
+        color: rgb(255, 255, 255);
+    }
+
+    .custom-btn:hover {
+        background-color: blue;
+        border-color: blue;
+        color: white;
+    }
+</style>
+  
+<h1>SA WAKAS GUMANA DIN SHET</h1> <br><br>
+<button type="button" class="btn custom-btn ">PRIMARY</button>
+<br><br>
+<button class="btn btn-success btn-md">BUTTON</button>
+<br><br>
+<button class="btn btn-success btn-lg">BUTTON</button>
+{% endblock %}
