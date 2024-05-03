@@ -1,15 +1,32 @@
 {% extends 'base.html' %}
+<<<<<<< HEAD
 
      {% block content %}  
     <style>
+=======
+
+
+{% block content %}
+
+<style>
+>>>>>>> afe18dc (Working Login and Logout with Display Data)
     .container{
 
         max-width: 70%;
     }
 </style>
+<<<<<<< HEAD
 
 <div class="container">
 {% if messages %}
+=======
+ 
+
+
+
+<div class="container">
+        {% if messages %}
+>>>>>>> afe18dc (Working Login and Logout with Display Data)
             {% for message in messages %}
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
             <strong>{{ message }}</strong>
@@ -17,6 +34,7 @@
         </div>
             {% endfor %}
         {% endif %}
+<<<<<<< HEAD
         
 {% if user.is_authenticated %}
 
@@ -69,3 +87,63 @@
 
 {% endif %}
 {% endblock %}
+=======
+
+    {% if user.is_authenticated %}
+    <table class="table">
+        <thead>
+            <tr>
+            <th>FIRST NAME</th>
+            <th>LAST NAME</th>
+            <th>EMAIL</th>
+            <th>PHONE</th>
+            <th>CITY</th>
+            <th>STATE</th>
+            <th>ZIP CODE</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if records %}
+                {% for record in records %}
+                    <tr>
+                        <td>{{ record.first_name }} </td>
+                        <td>{{ record.last_name }}</td>
+                        <td>{{ record.email }}</td>
+                        <td>{{ record.phone }}</td>
+                        <td>{{ record.city }}</td>
+                        <td>{{ record.state }}</td>
+                        <td>{{ record.zipcode }}</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+
+ {% else %}
+
+<div class="col-md-6 offset-md-3">
+    <h1>LOGIN</h1>
+
+    <form action="" method="post">
+        {% csrf_token %}
+
+            <div class="mb-3">
+            <input class="form-control" type="text" name="username" id="">
+            </div>
+            <div class="mb-3">
+            <input class="form-control" type="text" name="password" id="">
+            </div> <br>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">LOGIN</button>
+    </form>
+</div>   
+
+</div>
+
+{% endif %}
+
+
+
+
+
+{% endblock %}
+>>>>>>> afe18dc (Working Login and Logout with Display Data)
