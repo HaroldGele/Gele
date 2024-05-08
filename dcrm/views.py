@@ -8,7 +8,25 @@ from .models import Record
 def home(request):
     #DO SOMETHING
 
-    return render(request, 'home.html')
+    records = Record.objects.all()
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, "You Have Been Logged In!")
+            return redirect('home')
+        else:
+             messages.success(request, "There was an Error Logging In, Please Try Again")
+             return redirect('home')
+    else:
+
+        return render(request, 'home.html', {'records':records})
+
+
+
 
 
 def register(request):
@@ -17,9 +35,6 @@ def register(request):
         if form.is_valid():
             form.save()
 
-<<<<<<< HEAD
-    return render(request, 'register.html')
-=======
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
@@ -77,4 +92,3 @@ def delete_record(request, pk):
     else:
          messages.success(request, "You Must Be Logged In...")
          return redirect('home')   
->>>>>>> 24459c5 (Working CRUD)
